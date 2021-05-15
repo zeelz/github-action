@@ -34,6 +34,7 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-          echo $CITY
+          curl -X POST --data-urlencode "payload={\"text\": \"Guys, frontend master has just been merge. Backend, take over. [This is a test o /3]\"}" https://hooks.slack.com/services/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
+    
     env:
       CITY: lagos
