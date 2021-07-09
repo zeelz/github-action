@@ -1,7 +1,6 @@
 on:
-  merge:
-    branches:
-    - master
+  pull_request:
+    types: [closed]
 name: 🚀 Deploy website on push - zeelz
 jobs:
   web-deploy:
