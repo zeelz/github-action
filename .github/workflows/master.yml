@@ -1,4 +1,7 @@
-on: push
+on:
+  merge:
+    branches:
+    - master
 name: 🚀 Deploy website on push - zeelz
 jobs:
   web-deploy:
