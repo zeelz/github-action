@@ -11,4 +11,4 @@ jobs:
       - name: just checking
         run: |
           echo "list files"
-          ll
+          ls
