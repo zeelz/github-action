@@ -8,7 +8,11 @@ jobs:
       - name: get code
         uses: actions/checkout@v2
 
-      - name: just checking
-        run: |
-          echo "list files"
-          ls
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::553917154144:role/s3-full-access-role
+          aws-region: us-east-1
+
+      - name: s3 upload
+        run: aws s3 cp index.html "s3://zeelz-bucket-from-cli"
