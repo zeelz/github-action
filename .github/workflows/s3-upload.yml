@@ -1,15 +1,14 @@
-on:
-    push
+on: push
 
 jobs:
-    job-1:
-        runs-on: ubuntu-latest
+  job-1:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: get code
-            uses: actions/checkout@v2
+    steps:
+      - name: get code
+        uses: actions/checkout@v2
 
-            - name: just checking
-            run: |
-                echo "AWS version"
-                aws --version
+      - name: just checking
+        run: |
+          echo "AWS version"
+          aws --version
