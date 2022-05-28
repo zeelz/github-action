@@ -1,0 +1,15 @@
+on:
+    push
+
+jobs:
+    job-1:
+    runs-on: linux-latest
+
+    steps:
+        step-0
+        uses: action/checkout@v2
+
+        step-1
+        run: |
+            echo "AWS version"
+            aws --version
