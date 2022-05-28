@@ -10,5 +10,5 @@ jobs:
 
       - name: just checking
         run: |
-          echo "AWS version"
-          aws --version
+          echo "list files"
+          ll
