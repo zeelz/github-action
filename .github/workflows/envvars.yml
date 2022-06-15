@@ -1,13 +1,14 @@
 on: push
 
 jobs:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    - name: Ops
-      env:
-        myvar: "Lagos"
-      run: |
-        echo "My awesome env var is: ${{env.myvar}}"
+      - name: Ops
+        env:
+          myvar: "Lagos"
+        run: |
+          echo "My awesome env var is: ${{env.myvar}}"
