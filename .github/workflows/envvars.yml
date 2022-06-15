@@ -1,16 +1,19 @@
 on: push
 
 env:
-  KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+  AWS_EC2_PEM: ${{secrets.AWS_EC2_PEM}}
 jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      # - name: Checkout
+      # uses: actions/checkout@v2
 
       - name: Ops
         env:
           myvar: "Lagos"
         run: |
-          echo "My awesome env vars are: ${{env.myvar}} & ${{env.KEY_ID}}"
+          ssh-add - <<< "${{env.AWS_EC2_PEM}}"
+          ssh ec2-user@54.87.133.255
+          pwd
+        # echo "My awesome env vars are: ${{env.myvar}} & ${{env.KEY_ID}}"
