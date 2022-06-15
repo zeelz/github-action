@@ -12,8 +12,5 @@ jobs:
       - name: Ops
         env:
           myvar: "Lagos"
-        run: |
-          ssh-add - <<< "${{env.AWS_EC2_PEM}}"
-          ssh ec2-user@54.87.133.255
-          pwd
+        run: ech "God is faithful"
         # echo "My awesome env vars are: ${{env.myvar}} & ${{env.KEY_ID}}"
