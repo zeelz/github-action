@@ -1,5 +1,7 @@
 on: push
 
+env:
+  KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
 jobs:
   job1:
     runs-on: ubuntu-latest
@@ -11,4 +13,4 @@ jobs:
         env:
           myvar: "Lagos"
         run: |
-          echo "My awesome env var is: ${{env.myvar}}"
+          echo "My awesome env vars are: ${{env.myvar}} & ${{env.KEY_ID}}"
