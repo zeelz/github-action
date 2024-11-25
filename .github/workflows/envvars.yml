@@ -1,11 +1,11 @@
 on: push
 
 env:
-  AWS_EC2_PEM: ${{secrets.AWS_EC2_PEM}}
+  AWS_EC2_PEM: ${{secrets.AWS_EC2_PEM}} #this won't be echoed/displayed
 jobs:
   job1:
     runs-on: ubuntu-latest
-    # if: false # this is to disable the job
+    if: false # this is to disable the job
 
     steps:
       # - name: Checkout
