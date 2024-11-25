@@ -1,0 +1,19 @@
+on:
+    push
+
+jobs:
+    test-api:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: checkout
+             uses: "actions/checkout@v4"
+
+            - name: node setup
+              uses: "actions/setup-node@v3"
+
+            - name: install packages
+              run: npm i
+
+            - name: test
+              run: npm run test

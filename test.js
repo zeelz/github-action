@@ -1,5 +1,5 @@
 const request = require('supertest')
-const {createServer} = require("./app")
+const {createServer} = require("./server")
 
 describe("Index route", () => {
 
@@ -10,17 +10,21 @@ describe("Index route", () => {
     })
 
     afterEach((done) => {
-        server.close(done)
+        if (server.listening) {
+            server.close(done)            
+        } else {
+            done()
+        }
     })
 
     it("should return html", async () => {
 
         res = await request(server)
-            .get("/hello")
-            .expect("Content-Type", /json/)
+            .get("/welcome")
+            .expect("Content-Type", /text/)
             .expect(200)
 
-        // expect(res.text).toBe("...")
+        expect(res.text).toContain("Welcome to the future")
 
 
     })
