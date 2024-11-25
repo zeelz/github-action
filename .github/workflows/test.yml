@@ -19,7 +19,7 @@ jobs:
             #   run: npm run test
 
             - name: if test fails
-            #   if: failure()
+              if: true #failure()
               run: |
                 echo ${{ github.job }}
                 NOTIF_TEXT="Some test checks for the pull request *Add test workflow* ${{ job_id }} were not successful\nSee https://github.com/zeelz/github-action/actions/runs/12010559857/job/33477660383?pr=4\nActor involved @Uche"
