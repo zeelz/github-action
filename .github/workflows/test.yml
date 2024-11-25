@@ -42,7 +42,7 @@ jobs:
                 }
 
                 # Usage example
-                MEMBER_ID=vancouver #switch_case "apple" 
+                MEMBER_ID=$(switch_case "apple" )
                 NOTIF_TEXT="Some test checks for the pull request $MEMBER_ID"
                 echo $NOTIF_TEXT
                 
