@@ -21,9 +21,5 @@ jobs:
             - name: if test fails
               if: failure()
               run: |
-                echo "Run ID: ${{ github.run_id}}"
-                echo "Workflow: ${{ github.workflow }}"
-                echo "Repo ${{ github.repository }}"
-                echo "Trigger: ${{ github.event_name }}"
-                echo "Actor/PR Creator: ${{ github.actor }}"
-                curl -X POST -H "Content-Type application/json" -d '{"text": "test failed - ${{ github.run_id }}"}' ${{ secrets.SLACK_APP_WEBHOOK_URL }}
+                NOTIF_TEXT="Some test checks for the pull request *Add test workflow* were not successful\nSee https://github.com/zeelz/github-action/actions/runs/12010559857/job/33477660383?pr=4\nActor involved @zeelz"
+                curl -X POST -H "Content-Type: application/json" -d '{"text": "${ NOTIF_TEXT }"}' ${{ secrets.SLACK_APP_WEBHOOK_URL }}
