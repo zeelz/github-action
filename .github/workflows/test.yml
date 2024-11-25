@@ -21,6 +21,6 @@ jobs:
             - name: if test fails
             #   if: failure()
               run: |
-                echo ${{ job }}
+                echo ${{ github.job }}
                 NOTIF_TEXT="Some test checks for the pull request *Add test workflow* ${{ job_id }} were not successful\nSee https://github.com/zeelz/github-action/actions/runs/12010559857/job/33477660383?pr=4\nActor involved @Uche"
                 # curl -X POST -H "Content-Type: application/json" -d "{\"text\": \"$NOTIF_TEXT\"}" ${{ secrets.SLACK_APP_WEBHOOK_URL }}
