@@ -43,6 +43,6 @@ jobs:
 
                 # Usage example
                 switch_case "apple"
-                
+
                 NOTIF_TEXT="Some test checks for the pull request *Add test workflow* were not successful\nSee https://github.com/zeelz/github-action/actions/runs/12010559857/job/33477660383?pr=4\nActor involved @Uche"
                 # curl -X POST -H "Content-Type: application/json" -d "{\"text\": \"$NOTIF_TEXT\"}" ${{ secrets.SLACK_APP_WEBHOOK_URL }}
