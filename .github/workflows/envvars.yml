@@ -5,12 +5,14 @@ env:
 jobs:
   job1:
     runs-on: ubuntu-latest
+    # if: false # this is to disable the job
+
     steps:
       # - name: Checkout
       # uses: actions/checkout@v2
 
       - name: Ops
         env:
-          myvar: "Lagos"
-        run: echo "God is faithful"
-        # echo "My awesome env vars are: ${{env.myvar}} & ${{env.KEY_ID}}"
+          MY_CITY: "Lagos"
+        run: |
+          echo "My awesome env vars are: ${{env.MY_CITY}} & ${{env.AWS_EC2_PEM}}"
