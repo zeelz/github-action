@@ -43,7 +43,7 @@ jobs:
 
                 # Usage example
                 MEMBER_ID=switch_case "apple" 
-                NOTIF_TEXT="Some test checks for the pull request ${{ MEMBER_ID }}"
+                NOTIF_TEXT="Some test checks for the pull request $MEMBER_ID"
                 echo $NOTIF_TEXT
                 
                 #*Add test workflow* were not successful\nSee https://github.com/zeelz/github-action/actions/runs/12010559857/job/33477660383?pr=4\nActor involved @Uche"
