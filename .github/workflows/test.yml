@@ -21,4 +21,9 @@ jobs:
             - name: if test fails
               if: failure()
               run: |
-                curl -X POST -d "{\"text\": \"test failed\"}" ${{ secrets.SLACK_APP_WEBHOOK_URL }}
+                echo "Run ID: ${{ github.run_id}}"
+                echo "Workflow: ${{ github.workflow }}"
+                echo "Repo ${{ github.repository }}"
+                echo "Trigger: ${{ github.event_name }}"
+                echo "Actor/PR Creator: ${{ github.actor }}"
+                curl -X POST -H "Content-Type application/json" -d '{"text": "test failed - ${{ github.run_id }}"}' ${{ secrets.SLACK_APP_WEBHOOK_URL }}
