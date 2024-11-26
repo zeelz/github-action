@@ -9,8 +9,6 @@ jobs:
 
         steps:
             - name: if test fails
-              env:
-                MEMBER_IDS: ${{ vars.MEMBER_IDS }}
 
               run: |
                 # # Function to parse JSON-like string and switch based on key
@@ -47,6 +45,8 @@ jobs:
                 # }
 
             - name: Parse JSON and perform switch logic
+              env:
+                MEMBER_IDS: ${{ vars.MEMBER_IDS }}
               run: |
                 VALUE=$(echo $MEMBER_IDS | jq -r ".${{ github.actor }}")
                 echo $VALUE
