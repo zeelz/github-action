@@ -20,6 +20,9 @@ jobs:
             #   run: npm run test
 
             - name: if test fails
+              env:
+                MEMBER_IDS: ${{ vars.MEMBER_IDS }}
+
               run: |
 
                 # switch_case() {
@@ -78,8 +81,6 @@ jobs:
 
                 # Example JSON-like environment variable
                 # export MEMBER_IDS='{"zeelz":"U0104R4ULSW", "zeusmn":"U010H5HLLPN"}'
-                envs:
-                    MEMBER_IDS: ${{ vars.MEMBER_IDS }}
 
                 # Demonstrate switch cases
                 echo "Actor: $(switch_case "$MEMBER_IDS" ${{ github.actor }})"
