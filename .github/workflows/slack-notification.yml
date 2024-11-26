@@ -13,7 +13,7 @@ jobs:
             - name: send slack-notification
               env:
                 MEMBER_IDS: ${{ vars.MEMBER_IDS }}
-                SLACK_APP_WEBHOOK_URL: ${{ secrets.SLACK_APP_WEBHOOK_URL }}
+                SLACK_APP_WEBHOOK_URL: ${{ vars.SLACK_APP_WEBHOOK_URL }}
               run: |
                 MEMBER_ID=$(echo $MEMBER_IDS | jq -r ".${{ github.actor }}")
 
