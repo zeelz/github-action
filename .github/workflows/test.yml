@@ -20,5 +20,6 @@ jobs:
               run: npm run test
 
     slack-notification:
+        needs: test-api
         if: failure()
         uses: ./.github/workflows/slack-notification.yml
