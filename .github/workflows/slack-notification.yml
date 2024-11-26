@@ -50,7 +50,7 @@ jobs:
               run: |
                 # Parse the JSON string and get the value for a given key
                 echo "MEMBER_IDSS={/"zeelz/":/"U0104R4ULSW/", /"zeusmn/":/"U010H5HLLPN/"}" >> $GITHUB_ENV
-                echo $( $MEMBER_IDSS | jq -r '.zeelz')
+                echo $( echo $MEMBER_IDSS | jq -r '.zeelz')
 
         
 
