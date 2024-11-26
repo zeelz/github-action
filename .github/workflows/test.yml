@@ -21,8 +21,6 @@ jobs:
 
             - name: if test fails
               run: |
-                PR_TITLE="${{ github.event.pull_request.title }}" # github.event.head_commit.message
-                echo $PR_TITLE
 
                 switch_case() {
                     local value="$1"
@@ -44,7 +42,10 @@ jobs:
                     esac
                 }
 
-                # Usage example
                 MEMBER_ID=$(switch_case "zeelz" )
-                NOTIF_TEXT="Some test checks for the pull request $MEMBER_ID *Add test workflow* were not successful\nSee https://github.com/zeelz/github-action/actions/runs/12010559857/job/33477660383?pr=4\nActor involved <@$MEMBER_ID>"
-                # curl -X POST -H "Content-Type: application/json" -d "{\"text\": \"$NOTIF_TEXT\"}" ${{ secrets.SLACK_APP_WEBHOOK_URL }}
+                PR_TITLE="${{ github.event.pull_request.title }}" # github.event.head_commit.message
+                JOB_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/job/${{ job.id }}",
+
+                NOTIF_TEXT="Some test checks for the pull request _*$PR_TITLE*_ were not successful\nSee $JOB_URL\nActor involved <@$MEMBER_ID>"
+                
+                curl -X POST -H "Content-Type: application/json" -d "{\"text\": \"$NOTIF_TEXT\"}" ${{ secrets.SLACK_APP_WEBHOOK_URL }}
