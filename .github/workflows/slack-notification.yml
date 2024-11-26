@@ -49,8 +49,10 @@ jobs:
             - name: Parse JSON and perform switch logic
               run: |
                 # Parse the JSON string and get the value for a given key
-                echo "MEMBER_IDSS={/"zeelz/":/"U0104R4ULSW/", /"zeusmn/":/"U010H5HLLPN/"}" >> $GITHUB_ENV
-                echo $( echo $MEMBER_IDSS | jq -r '.zeelz')
+                # echo "MEMBER_IDSS={/"zeelz/":/"U0104R4ULSW/", /"zeusmn/":/"U010H5HLLPN/"}" >> $GITHUB_ENV
+
+
+                echo ${{ fromJson(vars.MEMBER_IDS) }} | jq -r '.zeelz'
 
         
 
