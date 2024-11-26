@@ -48,8 +48,9 @@ jobs:
 
             - name: Parse JSON and perform switch logic
               run: |
-                VALUE=$(echo "$MEMBER_IDS" | jq -r ".${{ github.actor }}")
+                VALUE=$(echo $MEMBER_IDS | jq -r ".${{ github.actor }}")
                 echo $VALUE
+                echo $MEMBER_IDS
                 echo ${{ github.actor }}
 
         
