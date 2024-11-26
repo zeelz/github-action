@@ -1,0 +1,55 @@
+on:
+    # push:
+    # pull_request:
+    workflow_call:
+
+jobs:
+    test-api:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: if test fails
+              env:
+                MEMBER_IDS: ${{ vars.MEMBER_IDS }}
+
+              run: |
+                # Function to parse JSON-like string and switch based on key
+                switch_case() {
+                    local json_str="$1"
+                    local key="$2"
+
+                    # Remove quotes and brackets if present
+                    json_str="${json_str#\{}"
+                    json_str="${json_str%\}}"
+
+                    # Split the string into key-value pairs
+                    IFS=',' read -ra PAIRS <<< "$json_str"
+
+                    # Iterate through pairs
+                    for pair in "${PAIRS[@]}"; do
+                        # Split each pair into key and value
+                        IFS=':' read -r k v <<< "$pair"
+                        
+                        # Trim whitespace and quotes
+                        k=$(echo "$k" | tr -d ' "')
+                        v=$(echo "$v" | tr -d ' "')
+
+                        # Check if key matches
+                        if [[ "$k" == "$key" ]]; then
+                            echo "$v"
+                            return 0
+                        fi
+                    done
+
+                    # If no match found
+                    echo "Unknown"
+                    return 1
+                }
+
+                MEMBER_ID=$(switch_case "$MEMBER_IDS" ${{ github.actor }})
+                PR_TITLE="${{ github.event.pull_request.title }}" # github.event.head_commit.message
+                JOB_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+
+                NOTIF_TEXT="Some `tests` checks for the pull request _*$PR_TITLE*_ were not successful.\nSee $JOB_URL\nActor involved <@$MEMBER_ID>"
+                
+                curl -X POST -H "Content-Type: application/json" -d "{\"text\": \"$NOTIF_TEXT\"}" ${{ secrets.SLACK_APP_WEBHOOK_URL }}
