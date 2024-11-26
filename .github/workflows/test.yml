@@ -1,0 +1,25 @@
+name: "Rialto API Test"
+
+on:
+    pull_request:
+
+jobs:
+    test-api:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout
+              uses: "actions/checkout@v4"
+
+            - name: node setup
+              uses: "actions/setup-node@v3"
+
+            - name: install packages
+              run: npm i
+
+            - name: test
+              run: npm run test
+
+    slack-notification:
+        needs: test-api
+        if: failure()
+        uses: ./.github/workflows/slack-notification.yml
