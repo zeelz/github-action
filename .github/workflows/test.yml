@@ -7,21 +7,18 @@ jobs:
     test-api:
         runs-on: ubuntu-latest
         steps:
-            # - name: checkout
-            #   uses: "actions/checkout@v4"
+            - name: checkout
+              uses: "actions/checkout@v4"
 
-            # - name: node setup
-            #   uses: "actions/setup-node@v3"
+            - name: node setup
+              uses: "actions/setup-node@v3"
 
-            # - name: install packages
-            #   run: npm i
+            - name: install packages
+              run: npm i
 
-            # - name: test
-            #   run: npm run test
-            - run: |
-                echo error
-                exit 1
+            - name: test
+              run: npm run test
 
     slack-notification:
-        if: true
+        if: failure()
         uses: ./.github/workflows/slack-notification.yml
