@@ -1,5 +1,5 @@
 on:
-    push:
+    # push:
     pull_request:
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
 
             - name: if test fails
               run: |
-                echo ${{ github.head_ref }}
+                echo ${{ github.base_ref }}
                 switch_case() {
                     local value="$1"
 
