@@ -23,7 +23,7 @@ jobs:
 
                 NOTIF_TEXT="Some \`test\` checks for the Pull Request _*$PR_TITLE*_ were not successful.\nSee $JOB_URL\nActor involved <@$MEMBER_ID>"
                 
-                curl -X POST -H "Content-Type: application/json" -d "{\"text\": \"$NOTIF_TEXT\", \"channel\": \"#github-pull-requests\"}"  $SLACK_APP_WEBHOOK_URL
+                curl -X POST -H "Content-Type: application/json" -d "{\"text\": \"$NOTIF_TEXT\", \"channel\": \"#github-pull-requests\", \"username\": \"Github Action\", \"channel\": \"#github-pull-requests\", \"icon_emoji\": ":interrobang:\"}"  $SLACK_APP_WEBHOOK_URL
 
 
-                    # -d "{\"username\": \"Github Action\"}" -d "{\"channel\": \"#github-pull-requests\"}" -d "{\"icon_emoji\": ":interrobang:\"}"
+                    
