@@ -50,8 +50,7 @@ jobs:
               run: |
                 # Parse the JSON string and get the value for a given key
                 MEMBER_IDSS="{/"zeelz/":/"U0104R4ULSW/", /"zeusmn/":/"U010H5HLLPN/"}"
-                # echo Actor's ID: $MEMBER_IDSS | jq -r '.${{ github.actor  }}'
-                jq --help
+                echo $MEMBER_IDSS | jq -r '.zeelz'
 
         
 
