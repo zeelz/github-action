@@ -21,7 +21,9 @@ jobs:
 
             - name: if test fails
               run: |
-                echo job id: ${{ job.id }}
+                PR_TITLE="${{ github.event.pull_request.title || github.event.head_commit.message }}"
+                echo $PR_TITLE
+
                 switch_case() {
                     local value="$1"
 
