@@ -23,5 +23,5 @@ jobs:
                 exit 1
 
     slack-notification:
-        if: failure()
+        if: true
         uses: ./.github/workflows/slack-notification.yml
