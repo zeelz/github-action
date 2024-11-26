@@ -50,6 +50,7 @@ jobs:
               run: |
                 VALUE=$(echo "$MEMBER_IDS" | jq -r ".${{ github.actor }}")
                 echo $VALUE
+                echo ${{ github.actor }}
 
         
 
