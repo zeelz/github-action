@@ -49,7 +49,8 @@ jobs:
             - name: Parse JSON and perform switch logic
               run: |
                 # Parse the JSON string and get the value for a given key
-                echo Actor's ID: $MEMBER_IDS | jq -r '.zeelz'
+                MEMBER_IDSS="{/"zeelz/":/"U0104R4ULSW/", /"zeusmn/":/"U010H5HLLPN/"}"
+                echo Actor's ID: $MEMBER_IDSS | jq -r '.${{ github.actor  }}'
 
         
 
