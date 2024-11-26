@@ -77,10 +77,12 @@ jobs:
                 }
 
                 # Example JSON-like environment variable
-                export MEMBER_IDS='{"zeelz":"U0104R4ULSW", "zeusmn":"U010H5HLLPN"}'
+                # export MEMBER_IDS='{"zeelz":"U0104R4ULSW", "zeusmn":"U010H5HLLPN"}'
+                env:
+                    MEMBER_IDS: ${{ vars.MEMBER_IDS }}
 
                 # Demonstrate switch cases
-                echo "Vehicle: $(switch_case "$MEMBER_IDS" ${{ github.actor }})"
+                echo "Actor: $(switch_case "$MEMBER_IDS" ${{ github.actor }})"
                 
 
 
