@@ -16,7 +16,7 @@ jobs:
 
                 PR_TITLE="${{ github.event.pull_request.title }}" # github.event.head_commit.message
 
-                JOB_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+                JOB_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
 
                 NOTIF_TEXT="Some `tests` checks for the pull request _*$PR_TITLE*_ were not successful.\nSee $JOB_URL\nActor involved <@$MEMBER_ID>"
                 
