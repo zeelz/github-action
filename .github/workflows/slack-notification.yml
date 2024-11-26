@@ -13,6 +13,7 @@ jobs:
             - name: send slack-notification
               env:
                 MEMBER_IDS: ${{ vars.MEMBER_IDS }}
+                SLACK_APP_WEBHOOK_URL: ${{ secrets.SLACK_APP_WEBHOOK_URL }}
               run: |
                 MEMBER_ID=$(echo $MEMBER_IDS | jq -r ".${{ github.actor }}")
 
@@ -22,4 +23,4 @@ jobs:
 
                 NOTIF_TEXT="Some \`test\` checks for the Pull Request _*$PR_TITLE*_ were not successful.\nSee $JOB_URL\nActor involved <@$MEMBER_ID>"
                 
-                curl -X POST -H "Content-Type: application/json" -d "{\"text\": \"$NOTIF_TEXT\"}" ${{ secrets.SLACK_APP_WEBHOOK_URL }}
+                curl -X POST -H "Content-Type: application/json" -d "{\"text\": \"$NOTIF_TEXT\"}" $SLACK_APP_WEBHOOK_URL
