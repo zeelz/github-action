@@ -12,7 +12,7 @@ jobs:
               env:
                 MEMBER_IDS: ${{ vars.MEMBER_IDS }}
               run: |
-                MEMBER_ID=123423432 #$(echo $MEMBER_IDS | jq -r ".${{ github.actor }}")
+                MEMBER_ID=123423432
 
                 PR_TITLE="${{ github.event.pull_request.title }}"
 
