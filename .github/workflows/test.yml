@@ -1,12 +1,12 @@
+name: "Rialto API Test"
+
 on:
-    # push:
-    # pull_request:
-    workflow_call:
+    push:
+    pull_request:
 
 jobs:
     test-api:
         runs-on: ubuntu-latest
-
         steps:
             # - name: checkout
             #   uses: "actions/checkout@v4"
@@ -19,7 +19,8 @@ jobs:
 
             # - name: test
             #   run: npm run test
-            - run: echo ""
+            - run: cat $NON_EXISTENT
 
-    slack-notification:
-        uses: ./.github/workflows/slack-notification.yml
+    # slack-notification:
+    #     if: failure()
+    #     uses: ./.github/workflows/slack-notification.yml
