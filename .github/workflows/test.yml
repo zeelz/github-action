@@ -4,7 +4,7 @@ on:
 
 jobs:
     test-api:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-lates
 
         steps:
             # - name: checkout
@@ -24,28 +24,6 @@ jobs:
                 MEMBER_IDS: ${{ vars.MEMBER_IDS }}
 
               run: |
-
-                # switch_case() {
-                #     local value="$1"
-
-                #     case "$value" in
-                #         "zeelz")
-                #             echo "U0104R4ULSW"
-                #             ;;
-                #         "car")
-                #             echo "Vehicle"
-                #             ;;
-                #         "blue")
-                #             echo "Color"
-                #             ;;
-                #         *)
-                #             echo "Unknown"
-                #             return 1
-                #             ;;
-                #     esac
-                # }
-
-
                 # Function to parse JSON-like string and switch based on key
                 switch_case() {
                     local json_str="$1"
@@ -79,18 +57,10 @@ jobs:
                     return 1
                 }
 
-                # Example JSON-like environment variable
-                # export MEMBER_IDS='{"zeelz":"U0104R4ULSW", "zeusmn":"U010H5HLLPN"}'
-
-                # Demonstrate switch cases
-                echo "Actor: $(switch_case "$MEMBER_IDS" ${{ github.actor }})"
-                
-
-
-                MEMBER_ID= #$(switch_case "zeelz" )
+                MEMBER_ID=$(switch_case "$MEMBER_IDS" ${{ github.actor }})
                 PR_TITLE="${{ github.event.pull_request.title }}" # github.event.head_commit.message
                 JOB_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
 
                 NOTIF_TEXT="Some `tests` checks for the pull request _*$PR_TITLE*_ were not successful.\nSee $JOB_URL\nActor involved <@$MEMBER_ID>"
                 
-                # curl -X POST -H "Content-Type: application/json" -d "{\"text\": \"$NOTIF_TEXT\"}" ${{ secrets.SLACK_APP_WEBHOOK_URL }}
+                curl -X POST -H "Content-Type: application/json" -d "{\"text\": \"$NOTIF_TEXT\"}" ${{ secrets.SLACK_APP_WEBHOOK_URL }}
