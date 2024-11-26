@@ -14,7 +14,7 @@ jobs:
               run: |
                 MEMBER_ID=$(echo $MEMBER_IDS | jq -r ".${{ github.actor }}")
 
-                # PR_TITLE=${{ github.event.pull_request.title }} # github.event.head_commit.message
+                PR_TITLE=${{ github.event.pull_request.title }} # github.event.head_commit.message
                 echo $MEMBER_ID, $PR_TITLE
 
                 # JOB_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
