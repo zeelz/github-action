@@ -21,4 +21,4 @@ jobs:
             - run: echo ""
 
     slack-notification:
-        uses: ./slack-notification.yml
+        uses: ./.github/workflows/slack-notification.yml
