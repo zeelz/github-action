@@ -1,13 +1,13 @@
 on:
-    # workflow_call:
-    workflow_run:
-        workflows: ["Rialto API Test"]
-        types:
-            - completed
+    workflow_call:
+    # workflow_run:
+    #     workflows: ["Rialto API Test"]
+    #     types:
+    #         - completed
 
 jobs:
     slack-notification:
-        if: ${{ github.event.workflow_run.conclusion == 'failure' }}  # Trigger only on failure
+        # if: ${{ github.event.workflow_run.conclusion == 'failure' }}  # Trigger only on failure
         runs-on: ubuntu-latest
 
         steps:
