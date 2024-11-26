@@ -4,11 +4,11 @@ on:
     workflow_call:
 
 jobs:
-    test-api:
+    slack-notification:
         runs-on: ubuntu-latest
 
         steps:
-            - name: if test fails
+            - name: send slack-notification
               env:
                 MEMBER_IDS: ${{ vars.MEMBER_IDS }}
               run: |
