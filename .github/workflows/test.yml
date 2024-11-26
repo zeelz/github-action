@@ -22,25 +22,25 @@ jobs:
             - name: if test fails
               run: |
 
-                switch_case0() {
-                    local value="$1"
+                # switch_case() {
+                #     local value="$1"
 
-                    case "$value" in
-                        "zeelz")
-                            echo "U0104R4ULSW"
-                            ;;
-                        "car")
-                            echo "Vehicle"
-                            ;;
-                        "blue")
-                            echo "Color"
-                            ;;
-                        *)
-                            echo "Unknown"
-                            return 1
-                            ;;
-                    esac
-                }
+                #     case "$value" in
+                #         "zeelz")
+                #             echo "U0104R4ULSW"
+                #             ;;
+                #         "car")
+                #             echo "Vehicle"
+                #             ;;
+                #         "blue")
+                #             echo "Color"
+                #             ;;
+                #         *)
+                #             echo "Unknown"
+                #             return 1
+                #             ;;
+                #     esac
+                # }
 
 
                 # Function to parse JSON-like string and switch based on key
@@ -77,14 +77,14 @@ jobs:
                 }
 
                 # Example JSON-like environment variable
-                export TEST_CONFIG='{"fruit":"apple", "vehicle":"car", "color":"blue"}'
+                export MEMBER_IDS='{"zeelz":"U0104R4ULSW", "zeusmn":"U010H5HLLPN"}'
 
                 # Demonstrate switch cases
-                echo "Vehicle: $(switch_case "$TEST_CONFIG" "vehicle")"
+                echo "Vehicle: $(switch_case "$MEMBER_IDS" ${{ github.actor }})"
                 
 
 
-                MEMBER_ID=$(switch_case "zeelz" )
+                MEMBER_ID= #$(switch_case "zeelz" )
                 PR_TITLE="${{ github.event.pull_request.title }}" # github.event.head_commit.message
                 JOB_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
 
