@@ -12,14 +12,12 @@ jobs:
               env:
                 MEMBER_IDS: ${{ vars.MEMBER_IDS }}
               run: |
-                MEMBER_ID=123423432
+                MEMBER_ID=$(echo $MEMBER_IDS | jq -r ".${{ github.actor }}")
 
                 PR_TITLE="${{ github.event.pull_request.title }}"
 
                 JOB_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
 
-                NOTIF_TEXT="Some `tests` checks for the pull request _*$PR_TITLE*_ were not successful.\nSee $JOB_URL\nActor involved <@$MEMBER_ID>"
+                NOTIF_TEXT="Some \`tests\` checks for the pull request _*$PR_TITLE*_ were not successful.\nSee $JOB_URL\nActor involved <@$MEMBER_ID>"
                 
-                echo $NOTIF_TEXT
-
-                # curl -X POST -H "Content-Type: application/json" -d "{\"text\": \"$NOTIF_TEXT\"}" ${{ secrets.SLACK_APP_WEBHOOK_URL }}
+                curl -X POST -H "Content-Type: application/json" -d "{\"text\": \"$NOTIF_TEXT\"}" ${{ secrets.SLACK_APP_WEBHOOK_URL }}
