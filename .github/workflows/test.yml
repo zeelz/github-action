@@ -1,5 +1,6 @@
 on:
-    push
+    push:
+    pull_request:
 
 jobs:
     test-api:
@@ -20,7 +21,7 @@ jobs:
 
             - name: if test fails
               run: |
-                echo ${{ github.job }}
+                echo ${{ github.head_ref }}
                 switch_case() {
                     local value="$1"
 
@@ -44,4 +45,4 @@ jobs:
                 # Usage example
                 MEMBER_ID=$(switch_case "zeelz" )
                 NOTIF_TEXT="Some test checks for the pull request $MEMBER_ID *Add test workflow* were not successful\nSee https://github.com/zeelz/github-action/actions/runs/12010559857/job/33477660383?pr=4\nActor involved <@$MEMBER_ID>"
-                curl -X POST -H "Content-Type: application/json" -d "{\"text\": \"$NOTIF_TEXT\"}" ${{ secrets.SLACK_APP_WEBHOOK_URL }}
+                # curl -X POST -H "Content-Type: application/json" -d "{\"text\": \"$NOTIF_TEXT\"}" ${{ secrets.SLACK_APP_WEBHOOK_URL }}
